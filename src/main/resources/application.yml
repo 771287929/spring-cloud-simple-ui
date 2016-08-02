@@ -1,0 +1,51 @@
+server:
+    port: 8089
+#    context-path: /simple-ui/
+
+logging:
+    level:
+        simple.service: DEBUG
+
+spring:
+    datasource:
+        name: test
+        url: jdbc:mysql://192.168.0.133:3306/test
+        username: root
+        password: DB_123456jia
+        # 使用druid数据源
+        type: com.alibaba.druid.pool.DruidDataSource
+        driver-class-name: com.mysql.jdbc.Driver
+        filters: stat
+        maxActive: 20
+        initialSize: 1
+        maxWait: 60000
+        minIdle: 1
+        timeBetweenEvictionRunsMillis: 60000
+        minEvictableIdleTimeMillis: 300000
+        validationQuery: select 'x'
+        testWhileIdle: true
+        testOnBorrow: false
+        testOnReturn: false
+        poolPreparedStatements: true
+        maxOpenPreparedStatements: 20
+    mvc:
+        view:
+            prefix: /templates/
+            suffix: .ftl
+    freemarker:
+        cache: false
+        request-context-attribute: request
+#    boot:
+#        admin:
+#            url: http://monitoradmin:9090
+ 
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://discovery:8761/eureka/
+#  instance:
+#    preferIpAddress: false
+#      
+#ribbon:
+#  eureka:
+#    enabled: true        
