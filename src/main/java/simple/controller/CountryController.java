@@ -31,6 +31,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -55,6 +56,12 @@ public class CountryController {
         result.addObject("page", country.getPage());
         result.addObject("rows", country.getRows());
         return result;
+    }
+    
+    @RequestMapping(value = "/{id}")
+    public @ResponseBody Country getOne(@PathVariable Integer id) {
+    	 Country country = countryService.getById(id);
+        return country;
     }
 
     @RequestMapping(value = "/add")
